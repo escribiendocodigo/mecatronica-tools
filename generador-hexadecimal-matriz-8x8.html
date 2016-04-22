@@ -5,6 +5,10 @@
     <title>Generador hexadecimal - matriz 8x8</title>
     <meta name="description" content="Permite generar de una manera facil el valor hexadecimal de una palabra usando matrices 8x8">
     <style>
+        #btnAgregarMatriz {
+            cursor: pointer;
+        }
+
         form.matriz {
             float: left;
         }
@@ -17,26 +21,24 @@
             background-color: #F9ECD0;
         }
 
-        form.matriz input[type=text],
-        form.matriz input[type=checkbox] {
+        form.matriz input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        form.matriz input.led[type="checkbox"],
+        form.matriz input.total[type="text"] {
 
             width: 20px;
             height: 20px;
         }
 
-        form.matriz input[type=checkbox] {
-            cursor: pointer;
-        }
-
-        form.matriz input[type=text] {
+        form.matriz input.total[type="text"] {
+            border: none;
             text-align: center;
             vertical-align: middle;
-        }
-
-        form.matriz input.total {
-            border: none;
             background-color: transparent;
         }
+
     </style>
 </head>
 <body>
@@ -57,8 +59,13 @@
 
         <form class="matriz">
             <table>
-                <caption class="caracterHex">0000000000000000</caption>
                 <thead>
+                    <tr>
+                        <td></td>
+                        <td colspan="8">
+                            <input type="text" value="0000000000000000" maxlength="16" class="caracterHex">
+                        </td>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr class="a">
@@ -226,15 +233,20 @@
 
         function btnAgregarMatriz_click(event) {
 
-
             var frmMatrizHtml = document.importNode(matrizTemplate.content, true),
+                frmMatriz,
+                txtCaracterHex,
                 txtLeds;
 
 
             matrizContainer.appendChild(frmMatrizHtml);
+            frmMatriz = matrizContainer.querySelector('form:last-child');
+
+            txtCaracterHex = frmMatriz.querySelector('input.caracterHex[type="text"]');
+            txtLeds = frmMatriz.querySelectorAll('input.led[type="checkbox"]');
 
 
-            txtLeds = matrizContainer.querySelectorAll('input.led[type=checkbox]');
+            txtCaracterHex.addEventListener('change', txtCaracterHex_change);
 
 
             for (var i = 0, length = txtLeds.length; i < length; i++) {
@@ -246,6 +258,11 @@
 
 
             mostrarPalabraHex();
+        }
+
+
+        function txtCaracterHex_change(event) {
+
         }
 
 
@@ -298,7 +315,7 @@
 
         function mostrarCaracterHex(frmMatriz) {
 
-            var caption = frmMatriz.querySelector('caption'),
+            var txtCaracterHex = frmMatriz.querySelector('input.caracterHex'),
                 txtTotalesA = frmMatriz.querySelectorAll('input.total.a'),
                 txtTotalesB = frmMatriz.querySelectorAll('input.total.b'),
                 caracterHex = '';
@@ -313,7 +330,7 @@
             }
 
 
-            caption.innerHTML = caracterHex;
+            txtCaracterHex.value = caracterHex;
 
         }
 
@@ -331,14 +348,14 @@
             for (var i = 0; i < frmMatrices.length; i++) {
 
                 var frmMatriz = frmMatrices[i],
-                    caption = frmMatriz.querySelector('caption');
+                    txtCaracterHex = frmMatriz.querySelector('input.caracterHex');
 
 
-                palabra += caption.innerHTML;
+                palabra += txtCaracterHex.value;
             }
 
 
-            palabraHex.innerHTML += palabra;
+            palabraHex.innerHTML = palabra;
 
         }
 
