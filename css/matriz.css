@@ -1,0 +1,33 @@
+#btnAgregarMatriz {
+    cursor: pointer;
+}
+
+form.matriz {
+    float: left;
+}
+
+form.matriz tr.a {
+    background-color: #BFFFE8;
+}
+
+form.matriz tr.b {
+    background-color: #F9ECD0;
+}
+
+form.matriz input[type="checkbox"] {
+    cursor: pointer;
+}
+
+form.matriz input.led[type="checkbox"],
+form.matriz input.total[type="text"] {
+
+    width: 20px;
+    height: 20px;
+}
+
+form.matriz input.total[type="text"] {
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
+}

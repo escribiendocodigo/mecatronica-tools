@@ -4,42 +4,9 @@
     <meta charset="UTF-8">
     <title>Generador hexadecimal - matriz 8x8</title>
     <meta name="description" content="Permite generar de una manera facil el valor hexadecimal de una palabra usando matrices 8x8">
-    <style>
-        #btnAgregarMatriz {
-            cursor: pointer;
-        }
 
-        form.matriz {
-            float: left;
-        }
+    <link rel="stylesheet" href="css/matriz.css" />
 
-        form.matriz tr.a {
-            background-color: #BFFFE8;
-        }
-
-        form.matriz tr.b {
-            background-color: #F9ECD0;
-        }
-
-        form.matriz input[type="checkbox"] {
-            cursor: pointer;
-        }
-
-        form.matriz input.led[type="checkbox"],
-        form.matriz input.total[type="text"] {
-
-            width: 20px;
-            height: 20px;
-        }
-
-        form.matriz input.total[type="text"] {
-            border: none;
-            text-align: center;
-            vertical-align: middle;
-            background-color: transparent;
-        }
-
-    </style>
 </head>
 <body>
 
@@ -55,174 +22,25 @@
 
 
 
-    <template id="matrizTemplate">
-
-        <form class="matriz">
-            <table>
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td colspan="8">
-                            <input type="text" value="0000000000000000" maxlength="16" class="caracterHex">
-                        </td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="a">
-                        <th>
-                            a<sub>1</sub> = 1
-                        </th>
-                        <td><input type="checkbox" value="1" data-columna="0" data-fila="0" class="led a"></td>
-                        <td><input type="checkbox" value="1" data-columna="1" data-fila="0" class="led a"></td>
-                        <td><input type="checkbox" value="1" data-columna="2" data-fila="0" class="led a"></td>
-                        <td><input type="checkbox" value="1" data-columna="3" data-fila="0" class="led a"></td>
-                        <td><input type="checkbox" value="1" data-columna="4" data-fila="0" class="led a"></td>
-                        <td><input type="checkbox" value="1" data-columna="5" data-fila="0" class="led a"></td>
-                        <td><input type="checkbox" value="1" data-columna="6" data-fila="0" class="led a"></td>
-                        <td><input type="checkbox" value="1" data-columna="7" data-fila="0" class="led a"></td>
-                    </tr>
-                    <tr class="a">
-                        <th>
-                            a<sub>2</sub> = 2
-                        </th>
-                        <td><input type="checkbox" value="2" data-columna="0" data-fila="1" class="led a"></td>
-                        <td><input type="checkbox" value="2" data-columna="1" data-fila="1" class="led a"></td>
-                        <td><input type="checkbox" value="2" data-columna="2" data-fila="1" class="led a"></td>
-                        <td><input type="checkbox" value="2" data-columna="3" data-fila="1" class="led a"></td>
-                        <td><input type="checkbox" value="2" data-columna="4" data-fila="1" class="led a"></td>
-                        <td><input type="checkbox" value="2" data-columna="5" data-fila="1" class="led a"></td>
-                        <td><input type="checkbox" value="2" data-columna="6" data-fila="1" class="led a"></td>
-                        <td><input type="checkbox" value="2" data-columna="7" data-fila="1" class="led a"></td>
-                    </tr>
-                    <tr class="a">
-                        <th>
-                            a<sub>3</sub> = 4
-                        </th>
-                        <td><input type="checkbox" value="4" data-columna="0" data-fila="2" class="led a"></td>
-                        <td><input type="checkbox" value="4" data-columna="1" data-fila="2" class="led a"></td>
-                        <td><input type="checkbox" value="4" data-columna="2" data-fila="2" class="led a"></td>
-                        <td><input type="checkbox" value="4" data-columna="3" data-fila="2" class="led a"></td>
-                        <td><input type="checkbox" value="4" data-columna="4" data-fila="2" class="led a"></td>
-                        <td><input type="checkbox" value="4" data-columna="5" data-fila="2" class="led a"></td>
-                        <td><input type="checkbox" value="4" data-columna="6" data-fila="2" class="led a"></td>
-                        <td><input type="checkbox" value="4" data-columna="7" data-fila="2" class="led a"></td>
-                    </tr>
-                    <tr class="a">
-                        <th>
-                            a<sub>4</sub> = 8
-                        </th>
-                        <td><input type="checkbox" value="8" data-columna="0" data-fila="3" class="led a"></td>
-                        <td><input type="checkbox" value="8" data-columna="1" data-fila="3" class="led a"></td>
-                        <td><input type="checkbox" value="8" data-columna="2" data-fila="3" class="led a"></td>
-                        <td><input type="checkbox" value="8" data-columna="3" data-fila="3" class="led a"></td>
-                        <td><input type="checkbox" value="8" data-columna="4" data-fila="3" class="led a"></td>
-                        <td><input type="checkbox" value="8" data-columna="5" data-fila="3" class="led a"></td>
-                        <td><input type="checkbox" value="8" data-columna="6" data-fila="3" class="led a"></td>
-                        <td><input type="checkbox" value="8" data-columna="7" data-fila="3" class="led a"></td>
-                    </tr>
-                    <!--  -->
-                    <tr class="b">
-                        <th>
-                            b<sub>1</sub> = 1
-                        </th>
-                        <td><input type="checkbox" value="1" data-columna="0" data-fila="4" class="led b"></td>
-                        <td><input type="checkbox" value="1" data-columna="1" data-fila="4" class="led b"></td>
-                        <td><input type="checkbox" value="1" data-columna="2" data-fila="4" class="led b"></td>
-                        <td><input type="checkbox" value="1" data-columna="3" data-fila="4" class="led b"></td>
-                        <td><input type="checkbox" value="1" data-columna="4" data-fila="4" class="led b"></td>
-                        <td><input type="checkbox" value="1" data-columna="5" data-fila="4" class="led b"></td>
-                        <td><input type="checkbox" value="1" data-columna="6" data-fila="4" class="led b"></td>
-                        <td><input type="checkbox" value="1" data-columna="7" data-fila="4" class="led b"></td>
-                    </tr>
-                    <tr class="b">
-                        <th>
-                            b<sub>2</sub> = 2
-                        </th>
-                        <td><input type="checkbox" value="2" data-columna="0" data-fila="5" class="led b"></td>
-                        <td><input type="checkbox" value="2" data-columna="1" data-fila="5" class="led b"></td>
-                        <td><input type="checkbox" value="2" data-columna="2" data-fila="5" class="led b"></td>
-                        <td><input type="checkbox" value="2" data-columna="3" data-fila="5" class="led b"></td>
-                        <td><input type="checkbox" value="2" data-columna="4" data-fila="5" class="led b"></td>
-                        <td><input type="checkbox" value="2" data-columna="5" data-fila="5" class="led b"></td>
-                        <td><input type="checkbox" value="2" data-columna="6" data-fila="5" class="led b"></td>
-                        <td><input type="checkbox" value="2" data-columna="7" data-fila="5" class="led b"></td>
-                    </tr>
-                    <tr class="b">
-                        <th>
-                            b<sub>3</sub> = 4
-                        </th>
-                        <td><input type="checkbox" value="4" data-columna="0" data-fila="6" class="led b"></td>
-                        <td><input type="checkbox" value="4" data-columna="1" data-fila="6" class="led b"></td>
-                        <td><input type="checkbox" value="4" data-columna="2" data-fila="6" class="led b"></td>
-                        <td><input type="checkbox" value="4" data-columna="3" data-fila="6" class="led b"></td>
-                        <td><input type="checkbox" value="4" data-columna="4" data-fila="6" class="led b"></td>
-                        <td><input type="checkbox" value="4" data-columna="5" data-fila="6" class="led b"></td>
-                        <td><input type="checkbox" value="4" data-columna="6" data-fila="6" class="led b"></td>
-                        <td><input type="checkbox" value="4" data-columna="7" data-fila="6" class="led b"></td>
-                    </tr>
-                    <tr class="b">
-                        <th>
-                            b<sub>4</sub> = 8
-                        </th>
-                        <td><input type="checkbox" value="8" data-columna="0" data-fila="7" class="led b"></td>
-                        <td><input type="checkbox" value="8" data-columna="1" data-fila="7" class="led b"></td>
-                        <td><input type="checkbox" value="8" data-columna="2" data-fila="7" class="led b"></td>
-                        <td><input type="checkbox" value="8" data-columna="3" data-fila="7" class="led b"></td>
-                        <td><input type="checkbox" value="8" data-columna="4" data-fila="7" class="led b"></td>
-                        <td><input type="checkbox" value="8" data-columna="5" data-fila="7" class="led b"></td>
-                        <td><input type="checkbox" value="8" data-columna="6" data-fila="7" class="led b"></td>
-                        <td><input type="checkbox" value="8" data-columna="7" data-fila="7" class="led b"></td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr class="a">
-                        <th>
-                            a<sub>&sum;</sub>
-                        </th>
-                        <td><input type="text" value="0" readonly data-columna="0" class="total a"></td>
-                        <td><input type="text" value="0" readonly data-columna="1" class="total a"></td>
-                        <td><input type="text" value="0" readonly data-columna="2" class="total a"></td>
-                        <td><input type="text" value="0" readonly data-columna="3" class="total a"></td>
-                        <td><input type="text" value="0" readonly data-columna="4" class="total a"></td>
-                        <td><input type="text" value="0" readonly data-columna="5" class="total a"></td>
-                        <td><input type="text" value="0" readonly data-columna="6" class="total a"></td>
-                        <td><input type="text" value="0" readonly data-columna="7" class="total a"></td>
-                    </tr>
-                    <tr class="b">
-                        <th>
-                            b<sub>&sum;</sub>
-                        </th>
-                        <td><input type="text" value="0" readonly data-columna="0" class="total b"></td>
-                        <td><input type="text" value="0" readonly data-columna="1" class="total b"></td>
-                        <td><input type="text" value="0" readonly data-columna="2" class="total b"></td>
-                        <td><input type="text" value="0" readonly data-columna="3" class="total b"></td>
-                        <td><input type="text" value="0" readonly data-columna="4" class="total b"></td>
-                        <td><input type="text" value="0" readonly data-columna="5" class="total b"></td>
-                        <td><input type="text" value="0" readonly data-columna="6" class="total b"></td>
-                        <td><input type="text" value="0" readonly data-columna="7" class="total b"></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </form>
-
-    </template>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.runtime.min.js"></script>
+    <script src="js/templates.min.js"></script>
 
     <script>
         var palabraHex,
-            matrizContainer,
-            matrizTemplate,
-            btnAgregarMatriz;
+            caracterHexDefault = '0000000000000000',
+            matrizContainer;
 
 
 
         document.addEventListener('DOMContentLoaded', function (event) {
 
-            palabraHex = document.getElementById('palabraHex'),
-            matrizContainer = document.getElementById('matrizContainer'),
-            matrizTemplate = document.getElementById('matrizTemplate'),
-            btnAgregarMatriz = document.getElementById('btnAgregarMatriz');
+
+            var btnAgregarMatriz = document.getElementById('btnAgregarMatriz');
+
+
+            palabraHex = document.getElementById('palabraHex');
+            matrizContainer = document.getElementById('matrizContainer');
 
 
             btnAgregarMatriz.addEventListener('click', btnAgregarMatriz_click);
@@ -233,27 +51,31 @@
 
         function btnAgregarMatriz_click(event) {
 
-            var frmMatrizHtml = document.importNode(matrizTemplate.content, true),
+            var frmMatrizHtml = Handlebars.templates.matriz(),
                 frmMatriz,
                 txtCaracterHex,
-                txtLeds;
+                chkLeds;
 
 
-            matrizContainer.appendChild(frmMatrizHtml);
+            $(matrizContainer).append(frmMatrizHtml);
+
             frmMatriz = matrizContainer.querySelector('form:last-child');
 
             txtCaracterHex = frmMatriz.querySelector('input.caracterHex[type="text"]');
-            txtLeds = frmMatriz.querySelectorAll('input.led[type="checkbox"]');
+            chkLeds = frmMatriz.querySelectorAll('input.led[type="checkbox"]');
 
 
+            txtCaracterHex.value = caracterHexDefault;
             txtCaracterHex.addEventListener('change', txtCaracterHex_change);
 
 
-            for (var i = 0, length = txtLeds.length; i < length; i++) {
 
-                var txtLed = txtLeds[i];
+            for (var i = 0, length = chkLeds.length; i < length; i++) {
 
-                txtLed.addEventListener('change', txtLed_change);
+                var chkLed = chkLeds[i];
+
+
+                chkLed.addEventListener('change', chkLed_change);
             }
 
 
@@ -261,49 +83,115 @@
         }
 
 
+
         function txtCaracterHex_change(event) {
 
-        }
-
-
-        function txtLed_change(event) {
-
-            var txtLed = event.target,
-                frmMatriz = txtLed.form,
-                columna = txtLed.dataset['columna'];
-
-
-            var txtLedsA = frmMatriz.querySelectorAll('input.led.a[data-columna="' + columna + '"]:checked'),
-                txtLedsB = frmMatriz.querySelectorAll('input.led.b[data-columna="' + columna + '"]:checked');
-
-            var txtTotalA = frmMatriz.querySelector('input.total.a[data-columna="' + columna + '"]'),
-                txtTotalB = frmMatriz.querySelector('input.total.b[data-columna="' + columna + '"]');
-
-            var totalA = 0,
-                totalB = 0;
+            var frmMatriz = this.form,
+                txtCaracterHex = this,
+                caracterHexFull = caracterHexDefault.concat(txtCaracterHex.value.trim()),
+                caracterHex = caracterHexFull.substring(caracterHexFull.length - caracterHexDefault.length),
+                digitosParDec = [];
 
 
 
-            for (var i = 0, length = txtLedsA.length; i < length; i++) {
+            //agrupando par de valores a y b
+            for (var i = 0; i < caracterHex.length; i++, i++) {
 
-                var txtLedA = txtLedsA[i];
+                var digitoAHex = caracterHex.substring(i + 1, i + 2),
+                    digitoBHex = caracterHex.substring(i, i + 1),
+                    digitoParDec = {
+                        a: parseInt(digitoAHex, 16),
+                        b: parseInt(digitoBHex, 16)
+                    }
 
 
-                totalA += parseInt(txtLedA.value);
+                digitosParDec.push(digitoParDec);
             }
 
 
-            for (var i = 0, length = txtLedsB.length; i < length; i++) {
 
-                var txtLedB = txtLedsB[i];
+            //marcando los checkboxs
+            for (var columna = 0, length = digitosParDec.length; columna < length; columna++) {
 
 
-                totalB += parseInt(txtLedB.value);
+                var digitoParDec = digitosParDec[columna];
+
+
+
+                for (var tipo in digitoParDec) {
+
+
+                    var chkLeds = frmMatriz.querySelectorAll('input.led.' + tipo + '[data-columna="' + columna + '"]'),
+                        txtTotal = frmMatriz.querySelector('input.total.' + tipo + '[data-columna="' + columna + '"]'),
+                        digitoDec = digitoParDec[tipo];
+
+
+
+                    txtTotal.value = digitoDec.toString(16).toUpperCase();
+
+
+
+                   //recorriendo de forma inversa
+                   for (var v = chkLeds.length - 1; v >= 0; v--) {
+
+                        var chkLed = chkLeds[v],
+                            valorLed = parseInt(chkLed.value);
+
+
+                        if (digitoDec >= valorLed) {
+
+                            chkLed.checked = true;
+                            digitoDec -= valorLed;
+
+                        } else {
+
+                            chkLed.checked = false;
+                        }
+
+
+                    }
+
+
+
+                }
+
+
             }
 
 
-            txtTotalA.value = totalA.toString(16).toUpperCase();
-            txtTotalB.value = totalB.toString(16).toUpperCase();
+
+            mostrarCaracterHex(frmMatriz);
+            mostrarPalabraHex();
+
+        };
+
+
+
+        function chkLed_change(event) {
+
+
+            var chkLed = event.target,
+                frmMatriz = chkLed.form,
+                columna = chkLed.dataset['columna'],
+                ab = (chkLed.classList.contains('a') ? 'a' : 'b');
+
+
+            var chkLeds = frmMatriz.querySelectorAll('input.led.' + ab + '[data-columna="' + columna + '"]:checked'),
+                txtTotal = frmMatriz.querySelector('input.total.' + ab + '[data-columna="' + columna + '"]'),
+                total = 0;
+
+
+
+            for (var i = 0, length = chkLeds.length; i < length; i++) {
+
+                var chkLed = chkLeds[i];
+
+
+                total += parseInt(chkLed.value);
+            }
+
+
+            txtTotal.value = total.toString(16).toUpperCase();
 
 
             mostrarCaracterHex(frmMatriz);
