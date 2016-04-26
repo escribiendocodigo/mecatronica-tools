@@ -54,6 +54,7 @@
             var frmMatrizHtml = Handlebars.templates.matriz(),
                 frmMatriz,
                 txtCaracterHex,
+                btnQuitarMatriz,
                 chkLeds;
 
 
@@ -62,12 +63,14 @@
             frmMatriz = matrizContainer.querySelector('form:last-child');
 
             txtCaracterHex = frmMatriz.querySelector('input.caracterHex[type="text"]');
+            btnQuitarMatriz = frmMatriz.querySelector('button.quitarMatriz');
             chkLeds = frmMatriz.querySelectorAll('input.led[type="checkbox"]');
 
 
             txtCaracterHex.value = caracterHexDefault;
             txtCaracterHex.addEventListener('change', txtCaracterHex_change);
-
+            btnQuitarMatriz.addEventListener('click', btnQuitarMatriz_click);
+            
 
 
             for (var i = 0, length = chkLeds.length; i < length; i++) {
@@ -79,6 +82,17 @@
             }
 
 
+            mostrarPalabraHex();
+        }
+
+
+
+        function btnQuitarMatriz_click(event) {
+
+            var frmMatriz = this.form;
+
+            
+            $(frmMatriz).remove();            
             mostrarPalabraHex();
         }
 

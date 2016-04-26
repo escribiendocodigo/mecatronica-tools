@@ -1,4 +1,6 @@
-#btnAgregarMatriz {
+#btnAgregarMatriz,
+form.matriz button.quitarMatriz,
+form.matriz input[type="checkbox"] {
     cursor: pointer;
 }
 
@@ -12,10 +14,6 @@ form.matriz tr.a {
 
 form.matriz tr.b {
     background-color: #F9ECD0;
-}
-
-form.matriz input[type="checkbox"] {
-    cursor: pointer;
 }
 
 form.matriz input.led[type="checkbox"],
