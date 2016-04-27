@@ -10,20 +10,29 @@
 </head>
 <body>
 
-    <h1 id="palabraHex">&nbsp;</h1>
+    <header>
+        <h1 id="palabraHex">&nbsp;</h1>
+        
+        <button id="btnCopiarCodigoHex" type="button" data-clipboard-text="">
+            Copiar código hexadecimal
+        </button>
+    </header>
+    <hr>
 
     <div id="matrizContainer">
         <!-- aqui se insertaran las matrices -->
     </div>
 
     <button id="btnAgregarMatriz" type="button">
-        + Agregar matriz
+        + Agregar matriz 8x8
     </button>
+
 
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.runtime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
     <script src="js/templates.min.js"></script>
 
     <script>
@@ -35,8 +44,11 @@
 
         document.addEventListener('DOMContentLoaded', function (event) {
 
+            var btnCopiarCodigoHex = document.getElementById('btnCopiarCodigoHex'),
+                btnAgregarMatriz = document.getElementById('btnAgregarMatriz');
 
-            var btnAgregarMatriz = document.getElementById('btnAgregarMatriz');
+            
+            new Clipboard(btnCopiarCodigoHex);
 
 
             palabraHex = document.getElementById('palabraHex');
@@ -258,6 +270,7 @@
 
 
             palabraHex.innerHTML = palabra;
+            btnCopiarCodigoHex.dataset['clipboardText'] = palabra;
 
         }
 

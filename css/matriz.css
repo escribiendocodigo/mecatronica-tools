@@ -1,3 +1,9 @@
+hr {
+    border-color: #ccc;
+    border-style: dotted;
+    border-width: 1px;
+}
+
 #matrizContainer {
     counter-reset: orden-matriz;
 }
@@ -9,6 +15,7 @@
 
 
 #btnAgregarMatriz,
+#btnCopiarCodigoHex,
 form.matriz button.quitarMatriz,
 form.matriz input[type="checkbox"] {
     cursor: pointer;
