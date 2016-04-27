@@ -1,3 +1,13 @@
+#matrizContainer {
+    counter-reset: orden-matriz;
+}
+
+#matrizContainer form.matriz span.orden::before {
+    counter-increment: orden-matriz;
+    content: counter(orden-matriz) 
+}
+
+
 #btnAgregarMatriz,
 form.matriz button.quitarMatriz,
 form.matriz input[type="checkbox"] {
@@ -6,6 +16,18 @@ form.matriz input[type="checkbox"] {
 
 form.matriz {
     float: left;
+    border-color: #ccc;
+    border-style: dotted;
+    border-width: 1px;
+}
+
+form.matriz thead {
+    background: #f4f4f4;
+}
+
+form.matriz span.orden {
+    text-align: center;
+    display: block;
 }
 
 form.matriz tr.a {
