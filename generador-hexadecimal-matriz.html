@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Generador hexadecimal - matriz 8x8</title>
-    <meta name="description" content="Permite generar de una manera facil el valor hexadecimal de una palabra usando matrices 8x8">
+    <title>Generador hexadecimal - matriz</title>
+    <meta name="description" content="Permite generar de una manera facil el valor hexadecimal de una palabra usando matrices">
 
     <link rel="stylesheet" href="css/matriz.css" />
 
@@ -12,7 +12,10 @@
 
     <header>
         <h1 id="palabraHex">&nbsp;</h1>
-        
+        <select id="cboTipoMatriz" required>
+            <option value="8x8">Matriz 8x8</option>
+            <option value="8x32">Matriz 8x32</option>
+        </select>
         <button id="btnCopiarCodigoHex" type="button" data-clipboard-text="">
             Copiar código hexadecimal
         </button>
@@ -24,7 +27,7 @@
     </div>
 
     <button id="btnAgregarMatriz" type="button">
-        + Agregar matriz 8x8
+        + Agregar matriz
     </button>
 
 
@@ -36,8 +39,16 @@
     <script src="js/templates.min.js"></script>
 
     <script>
-        var palabraHex,
-            caracterHexDefault = '0000000000000000',
+        var cboTipoMatriz,
+            palabraHex,
+            matriz = {
+                '8x8': {
+                    'caracterHex': '0000000000000000'
+                },
+                '8x32': {
+                    'caracterHex': '0000000000000000000000000000000000000000000000000000000000000000'
+                }
+            },
             matrizContainer;
 
 
@@ -47,10 +58,11 @@
             var btnCopiarCodigoHex = document.getElementById('btnCopiarCodigoHex'),
                 btnAgregarMatriz = document.getElementById('btnAgregarMatriz');
 
-            
+
             new Clipboard(btnCopiarCodigoHex);
 
 
+            cboTipoMatriz = document.getElementById('cboTipoMatriz');
             palabraHex = document.getElementById('palabraHex');
             matrizContainer = document.getElementById('matrizContainer');
 
@@ -60,10 +72,11 @@
         });
 
 
-
         function btnAgregarMatriz_click(event) {
 
-            var frmMatrizHtml = Handlebars.templates.matriz(),
+            var tipoMatriz = cboTipoMatriz.value,
+                template = 'matriz'.concat(tipoMatriz),
+                frmMatrizHtml = Handlebars.templates[template](),
                 frmMatriz,
                 txtCaracterHex,
                 btnQuitarMatriz,
@@ -79,10 +92,10 @@
             chkLeds = frmMatriz.querySelectorAll('input.led[type="checkbox"]');
 
 
-            txtCaracterHex.value = caracterHexDefault;
+            txtCaracterHex.value = matriz[tipoMatriz].caracterHex;
             txtCaracterHex.addEventListener('change', txtCaracterHex_change);
             btnQuitarMatriz.addEventListener('click', btnQuitarMatriz_click);
-            
+
 
 
             for (var i = 0, length = chkLeds.length; i < length; i++) {
@@ -103,8 +116,8 @@
 
             var frmMatriz = this.form;
 
-            
-            $(frmMatriz).remove();            
+
+            $(frmMatriz).remove();
             mostrarPalabraHex();
         }
 
@@ -112,7 +125,9 @@
 
         function txtCaracterHex_change(event) {
 
-            var frmMatriz = this.form,
+            var tipoMatriz = cboTipoMatriz.value,
+                caracterHexDefault = matriz[tipoMatriz].caracterHex,
+                frmMatriz = this.form,
                 txtCaracterHex = this,
                 caracterHexFull = caracterHexDefault.concat(txtCaracterHex.value.trim()),
                 caracterHex = caracterHexFull.substring(caracterHexFull.length - caracterHexDefault.length),

@@ -10,7 +10,7 @@ hr {
 
 #matrizContainer form.matriz span.orden::before {
     counter-increment: orden-matriz;
-    content: counter(orden-matriz) 
+    content: counter(orden-matriz)
 }
 
 
@@ -30,6 +30,10 @@ form.matriz {
 
 form.matriz thead {
     background: #f4f4f4;
+}
+
+form.matriz thead input.caracterHex {
+    width: 99%;
 }
 
 form.matriz span.orden {
